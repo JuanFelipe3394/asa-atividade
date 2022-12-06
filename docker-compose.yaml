@@ -1,0 +1,53 @@
+version: '3'
+
+networks:
+  asa:
+    driver: bridge
+
+services:
+  
+  web01:
+    build:
+      context: ./web01
+      dockerfile: Dockerfile.dockerfile
+    image: web01
+    container_name: web01
+    restart: always
+    tty: true
+    networks:
+      - asa
+  
+  web02:
+    build:
+      context: ./web02
+      dockerfile: Dockerfile.dockerfile
+    image: web02
+    container_name: web02
+    restart: always
+    tty: true
+    networks:
+      - asa
+
+  web03:
+    build:
+      context: ./web03
+      dockerfile: Dockerfile.dockerfile
+    image: web03
+    container_name: web03
+    restart: always
+    tty: true
+    networks:
+      - asa
+  
+  proxy:
+    build:
+      context: ./proxy
+      dockerfile: Dockerfile.dockerfile
+    image: proxy
+    container_name: proxy
+    restart: always
+    tty: true
+    ports:
+      - "8080:80"
+    networks:
+      - asa
