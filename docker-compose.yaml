@@ -45,9 +45,27 @@ services:
       dockerfile: Dockerfile.dockerfile
     image: proxy
     container_name: proxy
+    hostname: www.asa.br
     restart: always
     tty: true
     ports:
       - "8080:80"
+    networks:
+      - asa
+
+  dns:
+    build:
+      context: ./dns
+      dockerfile: Dockerfile.dockerfile
+    image: dns
+    container_name: dns
+    hostname: ns1.asa.br
+    restart: always
+    tty: true
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+    volumes:
+      - ./dns/conf:/etc/bind
     networks:
       - asa
