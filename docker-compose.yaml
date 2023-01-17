@@ -69,3 +69,14 @@ services:
       - ./dns/conf:/etc/bind
     networks:
       - asa
+        
+  email:
+    build:
+      context: ./email
+      dockerfile: Dockerfile.dockerfile
+    image: email
+    container_name: email
+    restart: always
+    tty: true
+    networks:
+      - asa
