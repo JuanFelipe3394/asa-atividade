@@ -4,9 +4,12 @@ RUN apt update
 
 RUN apt upgrade -y
 
+#instalando o telnet
+RUN apt-get install telnet-ssl telnetd-ssl -y
+
 #certificado ssl
 RUN apt-get install certbot python-certbot-nginx -y
-RUN certbot certonly --standalone -d mail.nt.rn.asa.br
+#RUN certbot certonly --standalone -d mail.nt.rn.asa.br
 
 #instalação e configuração do postfix
 RUN apt-get install postfix -y
