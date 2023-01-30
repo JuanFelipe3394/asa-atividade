@@ -12,6 +12,6 @@ COPY main.cf /etc/postfix
 RUN useradd -c 'User juan' -m -s /bin/false juan
 
 # Set user passord
-RUN echo -e "pwd123" | passwd juan
+RUN echo "juan:galado" | chpasswd
 
 CMD ["postfix", "start-fg"]
