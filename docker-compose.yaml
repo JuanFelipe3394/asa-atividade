@@ -78,5 +78,7 @@ services:
     container_name: email
     restart: always
     tty: true
+    ports:
+     - "2525:25/tcp"
     networks:
       - asa
