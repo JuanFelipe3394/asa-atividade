@@ -4,7 +4,7 @@ RUN apt update
 
 RUN apt upgrade -y
 
-RUN apt install postfix vim dnsutils iputils-ping telnet -y
+RUN apt install postfix vim dnsutils iputils-ping telnet dovecot-common dovecot-imapd -y
 
 COPY main.cf /etc/postfix
 
